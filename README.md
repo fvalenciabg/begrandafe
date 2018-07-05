@@ -27,7 +27,7 @@ $key = getenv("BEGRANDA_KEY");
 $invoice = new Invoice($endpoint,$key);
 $datetime = date("Y-m-d h:i:s");
 $invoice->
-setInvoiceNumber("990000022")->
+setInvoice("990000022")->
 setSeller([
     "nit"=>"44373983",
     "name"=>"Vendedor",
@@ -39,9 +39,9 @@ setSeller([
         "department"=>"Antioquia"
     ]
 ])->
-setInvoiceDate($datetime)->
-setInvoiceBase(100000.00)->
-setInvoiceTotal(119000.00)->
+setDate($datetime)->
+setBase(100000.00)->
+setTotal(119000.00)->
 setIva(19000.00)->
 setIca(0)->
 setIpo(0)->
@@ -56,7 +56,8 @@ setBuyer([
         "subdivission"=>"Belen",
         "department"=>"Antioquia"
     ]
-])
+]);
+$invoice->send();
 ```
 ### Dudas
 
