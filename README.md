@@ -3,6 +3,10 @@ Habilita enviar facturas electrónicas a la DIAN por medio del API de Begranda
 
 ## Acerca de 
 
+[![Packagist](https://img.shields.io/packagist/v/fvalencial/begrandafe.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/fvalencial/begrandafe)
+[![StyleCI](https://styleci.io/repos/93313402/shield)](https://styleci.io/repos/93313402)
+[![License](https://img.shields.io/packagist/l/fvalencial/begrandafe.svg?label=License&style=flat-square)](https://github.com/fvalencial/begrandafe/blob/develop/LICENSE)
+
 Usando la libería en PHP de begranda, podrás enviar facturas electronicas a la DIAN de una forma sencilla y limpia
 
 ### Requerimientos
