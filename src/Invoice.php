@@ -37,7 +37,7 @@ class Invoice
         $this->ica = $ica;
         return $this;
     }
-    public function invoice(String $invoice){
+    public function setInvoice(String $invoice){
         $this->invoice = $invoice;
         return $this;
     }
