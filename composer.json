@@ -1,0 +1,21 @@
+{
+    "name": "fvalencial/begrandafe",
+    "description": "Envía facturas electrónicas al api de Begranda para DIAN",
+    "type": "Library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fredy Valencia",
+            "email": "fvalenciabg@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fvalencial\\BegrandaFe\\": "src"
+        }
+    }
+}
