@@ -25,15 +25,15 @@ Ejecuta `composer require fvalenciabg/begrandafe`.
 El proceso para enviar una factura electronica simple
 
 ```
-$endpoint = getenv("BEGRANDA_ENDPOINT");
-$key = getenv("BEGRANDA_KEY");
+$endpoint = getenv("BG_ENDPOINT");
+$key = getenv("BG_KEY");
 
 $invoice = new Invoice($endpoint,$key);
 $datetime = date("Y-m-d h:i:s");
 $invoice->
-setInvoice("990000022")->
+setInvoice("990000067")->
 setSeller([
-    "nit"=>"44373983",
+    "nit"=>"5645643",
     "name"=>"Vendedor",
     "location"=>[
         "address"=>"Cl 46 AA 43",
@@ -49,6 +49,8 @@ setTotal(119000.00)->
 setIva(19000.00)->
 setIca(0)->
 setIpo(0)->
+setPaymentMethod(10)->
+setPaymentChannel(9)->
 setBuyer([
     "nit"=>"45747373",
     "name"=>"Comprador",
