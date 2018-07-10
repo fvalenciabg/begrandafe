@@ -100,6 +100,26 @@ class Invoice
         $this->ipo = $ipo;
         return $this;
     }
+
+    public function setAuthorizationNumber($authorizationNumber){
+        $this->invoiceAuthorization = $authorizationNumber;
+        return $this;
+    }
+
+    public function setAuthorizationPeriod($from,$to){
+        $this->authorizationPeriod = [$from,$to];
+        return $this;
+    }
+
+    public function setAuthorizationInvoiceFrom($authorizationInvoiceFrom){
+        $this->invoiceNumberFrom = $authorizationInvoiceFrom;
+        return $this;
+    }
+    
+    public function setAuthorizationInvoiceTo($authorizationInvoiceTo){
+        $this->invoiceNumberTo = $authorizationInvoiceTo;
+        return $this;
+    }
     public function setPaymentMethod(Int $paymentMethod){
         if(!in_array($paymentMethod,array_keys($this->paymentMethods))){
             throw new \Exception("Invalid payment method");
@@ -148,6 +168,18 @@ class Invoice
         if(!isset($this->paymentChannel)){
             throw new \Exception("The field paymentChannel is required");
         }
+        if(!isset($this->invoiceAuthorization)){
+            throw new \Exception("The field invoiceAuthorization is required");
+        }
+        if(!isset($this->authorizationPeriod)){
+            throw new \Exception("The field authorizationPeriod is required");
+        }
+        if(!isset($this->invoiceNumberFrom)){
+            throw new \Exception("The field invoiceNumberFrom is required");
+        }
+        if(!isset($this->invoiceNumberTo)){
+            throw new \Exception("The field invoiceNumberTo is required");
+        }
     }
     public function send(){
         $this->validateFields();
@@ -170,7 +202,14 @@ class Invoice
                 "invoice"=>$this->invoice,
                 "date"=>$this->date,
                 "paymentMethod"=>$this->paymentMethod,
-                "paymentChannel"=>$this->paymentChannel
+                "paymentChannel"=>$this->paymentChannel,
+                "authorization"=>[
+                    "number"=>$this->invoiceAuthorization,
+                    "dateFrom"=>$this->authorizationPeriod[0],
+                    "dateTo"=>$this->authorizationPeriod[1],
+                    "invoiceFrom"=>$this->invoiceNumberFrom,
+                    "invoiceTo"=>$this->invoiceNumberTo,
+                ]
             ])))
         );
 
