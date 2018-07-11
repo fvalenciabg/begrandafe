@@ -1,4 +1,6 @@
 # Begranda facturación electrónica
+
+
 Habilita enviar facturas electrónicas a la DIAN por medio del API de Begranda
 
 ## Acerca de 
@@ -31,38 +33,42 @@ $key = getenv("BG_KEY");
 $invoice = new Invoice($endpoint,$key);
 $datetime = date("Y-m-d h:i:s");
 $invoice->
-setInvoice("990000067")->
-setSeller([
-    "nit"=>"5645643",
-    "name"=>"Vendedor",
-    "location"=>[
-        "address"=>"Cl 46 AA 43",
-        "countryCode"=>"CO",
-        "city"=>"Medellín",
-        "subdivission"=>"Poblado",
-        "department"=>"Antioquia"
-    ]
-])->
-setDate($datetime)->
-setBase(100000.00)->
-setTotal(119000.00)->
-setIva(19000.00)->
-setIca(0)->
-setIpo(0)->
-setPaymentMethod(10)->
-setPaymentChannel(9)->
-setBuyer([
-    "nit"=>"45747373",
-    "name"=>"Comprador",
-    "type"=>31,
-    "location"=>[
-        "address"=>"CR 33 56 34",
-        "countryCode"=>"CO",
-        "city"=>"Medellin",
-        "subdivission"=>"Belen",
-        "department"=>"Antioquia"
-    ]
-]);
+    setInvoice("990000072")->
+    setSeller([
+        "nit"=>"3534533",
+        "name"=>"Vendedor",
+        "location"=>[
+            "address"=>"Cl 46 AA 43",
+            "countryCode"=>"CO",
+            "city"=>"Medellín",
+            "subdivission"=>"Poblado",
+            "department"=>"Antioquia"
+        ]
+    ])->
+    setDate($datetime)->
+    setBase(100000.00)->
+    setTotal(119000.00)->
+    setIva(19000.00)->
+    setIca(0)->
+    setIpo(0)->
+    setPaymentMethod(10)->
+    setPaymentChannel(9)->
+    setAuthorizationNumber("9000000123303363")->
+    setAuthorizationPeriod("2018-05-05","2028-05-05")->
+    setAuthorizationInvoiceFrom(990000000)->
+    setAuthorizationInvoiceTo(995000000)->
+    setBuyer([
+        "nit"=>"45747373",
+        "name"=>"Comprador",
+        "type"=>31,
+        "location"=>[
+            "address"=>"CR 33 56 34",
+            "countryCode"=>"CO",
+            "city"=>"Medellin",
+            "subdivission"=>"Belen",
+            "department"=>"Antioquia"
+        ]
+    ]);
 $invoice->send();
 ```
 ### Dudas
